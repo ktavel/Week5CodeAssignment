@@ -10,7 +10,8 @@ class schoolSports{
 
 class Sport {
     constructor(name){
-        this.name=name
+        this.name = name;
+        this.roster = [];
     }
     addSport(sport){
         if(sport instanceof Sport){
@@ -36,7 +37,7 @@ class Menu {
         while( selection != 0){
             switch(selection){
                 case '1':
-                    this.createSport
+                    this.createSport();
                     break;
                 case '2':
                     this.viewSport();
@@ -91,21 +92,34 @@ class Menu {
 
     viewSport() {
         let index = prompt('Enter the index of the sport you wish to view.');
-        if (index >  -1 && index < this.sport.length) {
+        if (index > -1 && index < this.sport.length) {
             this.selectedSport = this.sport[index];
             let description = 'Sport Name ' + this.selectedSport.name + '\n';
-            for(let i = 0; i < this.selectedSport.player.length; i ++) {
-                description += i + ') ' + this.selectedSport.player[i].name +
-                 ' - ' + this.selectedSport.player[i].player + '\n';
+
+            for(let i = 0; i < this.selectedSport.player.length; i++) {
+                description += i + ') ' + this.selectedSport.player[i].name 
+                +' - '+ this.selectedSport.player[i].roster + '\n';
             }
             let selection = this.showSportMenuOptions(description);
             switch(selection) {
                 case '1':
-                    this.createSport();
+                    this.createPlayer();
                     break;
                 case '2':
-                    this.deleteSport();
+                    this.deletePlayer();
             }
+        }
+    }
+
+    createPlayer(){
+        let name = promt ('Enter name for new player:');
+        this.selectedSport.roster.push(new Player(name));
+    }
+
+    deletePlayer() {
+        let index = promt('Enter the name of the player you want to delete:');
+        if (index > -1 && this.selectedSport.player.length) {
+            this.selectedSport.roster.splice(index, 1);
         }
     }
 }
