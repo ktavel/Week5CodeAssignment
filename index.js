@@ -109,11 +109,10 @@ class Menu {
                     this.deletePlayer();
             }
         }
-        deleteSport() {
-            let index = prompt('Enter the name of the sport you want to delete:');
-            if(index > -1 && index < this.sport.length){
-                this.teams.splice(index, 1);
-            }
+    }  deleteSport() {
+        let index = prompt('Enter the index of the sport you want to delete:');
+        if(index > -1 && index < this.sport.length){
+            this.sport.splice(index, 1);
         }
     }
 
