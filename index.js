@@ -96,7 +96,7 @@ class Menu {
             this.selectedSport = this.sport[index];
             let description = 'Sport Name ' + this.selectedSport.name + '\n';
 
-            for(let i = 0; i < this.selectedSport.player.length; i++) {
+            for(let i = 0; i < this.selectedSport.roster.length; i++) {
                 description += i + ') ' + this.selectedSport.player[i].name 
                 +' - '+ this.selectedSport.player[i].roster + '\n';
             }
