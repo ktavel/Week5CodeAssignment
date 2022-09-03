@@ -8,6 +8,7 @@ class schoolSports{
     }
 }
 
+
 class Sport {
     constructor(name){
         this.name = name;
@@ -97,8 +98,7 @@ class Menu {
             let description = 'Sport Name ' + this.selectedSport.name + '\n';
 
             for(let i = 0; i < this.selectedSport.roster.length; i++) {
-                description += i + ') ' + this.selectedSport.player[i].name 
-                +' - '+ this.selectedSport.player[i].roster + '\n';
+                description += i + ') ' + this.selectedSport.roster[i].name +'\n';
             }
             let selection = this.showSportMenuOptions(description);
             switch(selection) {
@@ -117,13 +117,13 @@ class Menu {
     }
 
     createPlayer(){
-        let name = promt ('Enter name for new player:');
-        this.selectedSport.roster.push(new Player(name));
+        let name = prompt('Enter name for new player:');
+        this.selectedSport.roster.push(name);
     }
 
     deletePlayer() {
-        let index = promt('Enter the name of the player you want to delete:');
-        if (index > -1 && this.selectedSport.player.length) {
+        let index = prompt('Enter the name of the player you want to delete:');
+        if (index > -1 && index < this.selectedSport.player.length) {
             this.selectedSport.roster.splice(index, 1);
         }
     }
